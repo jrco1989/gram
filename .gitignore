@@ -1,0 +1,11 @@
+*.pyc
+*~
+__pycache__
+myvenv
+db.sqlite3
+/static
+.DS_Store
+eng
+Madonna.jpg
+Madonna-2.jpg
+Pubertad.jpg
