@@ -1,5 +1,6 @@
-from django.db import models
+from django import models 
 
-class User(request):
-	name=models.CharField(leng_max(100))
-	admin=models.Bolean(defautl = True)
+class User (models.Models):
+	name = charField(max_length=90)
+	Admin=Boolean.models(default=True)
+	 
