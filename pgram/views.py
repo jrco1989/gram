@@ -8,7 +8,7 @@ def saludo(request):
 
 def personalizado(resquest, name, age):
 	if age >18:
-		message='hi {}! welcome here'.format(name)
+		message='hi {}!, welcome here'.format(name)
 	else: 
 		message ="hi {}!, you don't have allowed stay here".format(name)
 	return HttpResponse(message)
