@@ -15,7 +15,7 @@ posts = [
         },
         'timestamp': datetime.now().strftime('%b %dth, %Y - %H:%M hrs'),
         #'photo': 'https://fotografias.lasexta.com/clipping/cmsimages01/2019/06/04/3EC08BDA-7BE1-4413-A831-277039B478B9/58.jpg',
-        'picture': 'https://picsum.photos/60/60/?image=1005'
+        'photo': 'https://picsum.photos/60/60/?image=1005'
     },
     {
         'title': 'Via Láctea',
