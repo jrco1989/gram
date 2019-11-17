@@ -1,0 +1,26 @@
+{% extends "user/base.html"%}
+<!-- -->
+{%block head_content %}
+<title>
+	autenticación
+</title>
+{% endblock %}
+
+{% block container %}
+	{%if error%}
+	<!--<p style="color:red;"> {{error }}</p> estilo sencillo -->
+	<p class="alert alert-danger">{{error }}</p><!--estilo pertenenciente a la clase alert -->
+<!-- -->
+	{%endif%}
+	<form method="POST" action="{% url "ingreso" %}"> <!--#médodo para crear el formulario*/-->
+													  <!-- el tag {%url ...} perimte tomar un a URL y la convierte en una URL normal para no tener que cambiarla de todos lados cuando cambie la URL en el archivo de URLS-->
+		{% csrf_token %}			<!--tag especia// método para protegernos de ataques "cross site" (evita que desde cualquier sitio puedan realiar submit al formulario) -->
+		<div class="form.group"><!-- clase que engloba a los fromularios-->
+			<input type="text" class="form-control">
+		</div>
+		<input type="text" placeholder="Username" name="username"/><!-- placeholder es lo que se va a mostar y username es nombre del valor que se va a reicibir-->
+		<input type="password" placeholder="Password" name="password"/>
+		<button type="submit">ingrese pués pécora</button>
+	</form>
+		        
+{% endblock%}

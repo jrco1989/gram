@@ -129,4 +129,26 @@ STATICFILES_FINDER= [ #métodos para encontrar los archivos estáticos
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
-MEDIA_URL='/media/'
+MEDIA_URL='/media/' #ubicacion del directorio de media
+LOGIN_URL='/users/ingreso' #ubicación de la vista para loguearnos
+"""set
+#during
+#handling
+#above
+#patterns
+#unable to access
+#denied
+#caution
+#letters
+foreign
+feed
+releases
+released
+issue
+finders
+middleware
+submit
+path
+forbidden 
+#fives
+#tens"""
