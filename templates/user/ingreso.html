@@ -11,7 +11,7 @@
 	<!--<p style="color:red;"> {{error }}</p> estilo sencillo -->
 	<p class="alert alert-danger">{{error }}</p><!--estilo pertenenciente a la clase alert -->
 <!-- -->
-	{%endif%}
+	%endif%
 	<form method="POST" action="{% url "ingreso" %}"> <!--#médodo para crear el formulario*/-->
 													  <!-- el tag {%url ...} perimte tomar un a URL y la convierte en una URL normal para no tener que cambiarla de todos lados cuando cambie la URL en el archivo de URLS-->
 		{% csrf_token %}			<!--tag especia// método para protegernos de ataques "cross site" (evita que desde cualquier sitio puedan realiar submit al formulario) -->
