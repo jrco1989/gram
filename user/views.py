@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect  #nos permite usar un método para
 from django.contrib.auth import authenticate, login, logout #importando las funciones de autenticadcion, logout de login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from user.models import profile
+from user.models import Profile
 from django.db.utils import IntegrityError #importando el erro rque salión en cmd para poder capturarlo
 
 def ingreso(request):
@@ -43,9 +43,13 @@ def create(request):
 		user.email=request.POST['email']
 		user.save()
 
-		perfil=profile(user=user)     #una de las maneras para crear un nuevo resitro en la bse de datos, es creando un ainstancia del modelo PRofile casociandola con el usuario 
+		perfil=Profile(user=user) #una de las maneras para crear un nuevo resitro en la bse de datos, es creando un ainstancia del modelo PRofile casociandola con el usuario 
 		perfil.save()
 		return redirect('ingreso')
 	return render(request, 'user/new.html')
+def actualizar(request):
+	profile=request.user.profile
+
+	return render(request=request, template_name= 'user/me/edit.html', context={'profile':profile,'user':request.user})
 
 

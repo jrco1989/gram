@@ -8,7 +8,7 @@ from datetime import datetime
 
 posts = [
     {
-        'title': '"sistema solar"',
+        'title': '"sistema Polar"',
         'user': {
             'name': 'Nina Simone',
             'picture': 'https://picsum.photos/id/60/60/60',

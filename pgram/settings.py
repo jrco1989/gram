@@ -40,15 +40,17 @@ INSTALLED_APPS = [
     'posts',
     'user',
 ]
-
+#son una serie de hooks y apis que nos permiten modificar los objetos response y request antes de que lleguen a la vista y después de que salgan de la vista
+#son llamados nates y después de la petición 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',#este se encarga d ecomprobar todas las medidas de seguridad 
+    'django.contrib.sessions.middleware.SessionMiddleware',# es escargado de validar una seciíon 
+    'django.middleware.common.CommonMiddleware',#se encarga de ver lo del "deboger", cosas relacionadas del framework
+    'django.middleware.csrf.CsrfViewMiddleware',#es el que nos permite llamar a nuestro token para validar formularios 
+    'django.contrib.auth.middleware.AuthenticationMiddleware',#agrega cosas como request.user sin necesidad de llamar un template
+    'django.contrib.messages.middleware.MessageMiddleware',#relacionado al frameqock de mensajes de django 
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',#seguridad con frameoptions 
+    'pgram.middleware.ProfileCompletionMiddleware',#se pone laruta de la API para agregarla 
 ]
 
 ROOT_URLCONF = 'pgram.urls'

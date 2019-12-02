@@ -1,0 +1,8 @@
+{%extends "base.html"%}
+
+{%block head_content%}
+<title>Hi! @{{request.user.username}} | Update profile </title><!-- ingresa el nombre de usuario cuado hay un u suario logueado -->
+{%endblock%}
+{%block container%}
+	<h1 class="mt-5">@{{request.user.username}}</h1>
+{%endblock%}
