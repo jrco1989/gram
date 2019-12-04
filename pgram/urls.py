@@ -18,3 +18,4 @@ urlpatterns = [
     #path ('saludo', views.saludo)
     ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)#permite mostrar archivos de con distintos formatos gráficos
     
+    

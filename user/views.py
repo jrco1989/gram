@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout #importando las func
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from user.models import Profile
-from django.db.utils import IntegrityError #importando el erro rque salión en cmd para poder capturarlo
+from django.db.utils import IntegrityError #importando el error que salió en cmd para poder capturarlo
 
 def ingreso(request):
 	if request.method == 'POST':
@@ -47,9 +47,13 @@ def create(request):
 		perfil.save()
 		return redirect('ingreso')
 	return render(request, 'user/new.html')
+
+@login_required
 def actualizar(request):
 	profile=request.user.profile
 
-	return render(request=request, template_name= 'user/me/edit.html', context={'profile':profile,'user':request.user})
+	return render(request=request, template_name= 'user/edit.html', context={'profile':profile,'user':request.user})#prestar atención al coxtexto "para no hacer todo el "path request punto profile.user"
+	#return render(request,'user/edit.html') , primera forma de realizarlo
+
 
 
