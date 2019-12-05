@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from user.models import Profile
 from django.db.utils import IntegrityError #importando el error que salió en cmd para poder capturarlo
+from user.forms import ProfileForm
 
 def ingreso(request):
 	if request.method == 'POST':
@@ -43,16 +44,40 @@ def create(request):
 		user.email=request.POST['email']
 		user.save()
 
-		perfil=Profile(user=user) #una de las maneras para crear un nuevo resitro en la bse de datos, es creando un ainstancia del modelo PRofile casociandola con el usuario 
-		perfil.save()
+		profile=Profile(user=user) #una de las maneras para crear un nuevo resitro en la bse de datos, es creando un ainstancia del modelo PRofile casociandola con el usuario 
+		profile.save()
 		return redirect('ingreso')
 	return render(request, 'user/new.html')
 
 @login_required
 def actualizar(request):
-	profile=request.user.profile
+	profile=request.user.profile #primera forma d etraer los datos 
+	if request.method == 'POST':
+		form =ProfileForm(request.POST, request.FILES) # se crea una instancia de profileform
+		if form.is_valid():#se realiza una validación 
+			print (form.cleaned_data)
+			data=form.cleaned_data
+			profile.website=data['website']
+			profile.phone = data['phone']
+			profile.biog = data['biog']
+			profile.picture = data['picture']
+			profile.save()
 
-	return render(request=request, template_name= 'user/edit.html', context={'profile':profile,'user':request.user})#prestar atención al coxtexto "para no hacer todo el "path request punto profile.user"
+			return redirect('renueva')
+
+	else:
+		form=ProfileForm()
+
+
+	return render(
+		request=request,
+        template_name='user/edit.html',
+        context={
+            'profile': profile,
+            'user': request.user,
+            'form': form
+        })
+		#prestar atención al coxtexto "para no hacer todo el "path request punto profile.user", permite tamibien tener disponicle las variables declaradas
 	#return render(request,'user/edit.html') , primera forma de realizarlo
 
 

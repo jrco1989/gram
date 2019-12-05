@@ -14,11 +14,11 @@
 
             <form action="{% url 'renueva' %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-
+                <!--muestra los errores que están ocurriendo 
                 {% if form.errors %}
-                    <p>{{ form.errors }}</p>
+                    <p class="alert alert-danger">{{ form.errors }}</p>
                 {% endif %}
-
+                    -->
                 <div class="media">
                     {% if profile.picture %}
                         <img src="{{ profile.picture.url }}" class="rounded-circle" height="50" />
@@ -28,37 +28,65 @@
 
                     <div class="media-body">
                         <h5 class="ml-4">@{{ user.username }} | {{ user.get_full_name }}</h5>
-                        <p class="ml-4"><input type="file" name="picture" required="true"></p>
+                        <p class="ml-4"><input type="file" name="picture"></p>
                     </div>
                 </div>
-
+                {%for error in form.picture.errors%}
+                    <div class="alert alert-danger">
+                        <b>picture</b>{{error}}                        
+                    </div>
+                {%endfor%}
                 <hr><br>
 
                 <div class="form-group">
                     <label>Website</label>
+                    <!--en clas se está dandole lgica para que acceda a la clase de bootstraps, y en valule se está generand que de permita visualizar el valo rerroneo qoue el usuario h aingresado para qu elo corrija sin tener que volverlo a escribir -->
                     <input
-                        class="form-control"
-                        type="url"
+                        class="form-control {%if form.website.errors %}is-invalid{%endif%}"  
+                        type="text"
                         name="website"
                         placeholder="Website"
-                        value="{{ profile.website }}"
+                        value="{%if form.errors %}{{form.website.value}}{%else%}{{ profile.website }}{%endif%}"
                     />
+                    <!--tag para que aparexca un mensaje de error si llega a ocurrir-->
+                    <div class="invalid-feedback">
+                        {%for error in form.website.errors %}
+                        {{error}}
+                        {%endfor%}
+                    </div>
+                        
                 </div>
 
                 <div class="form-group">
                     <label>Biography</label>
-                    <textarea class="form-control" name="biog">{{ profile.biog}}</textarea>
+                    <textarea 
+                        class="form-control {%if form.biog.errors %}is-invalid{%endif%}"
+                        name="biog">{%if form.errors %}{{form.biog.value}}{%else%}{{ profile.biog }}{%endif%}
+                              
+                    </textarea>
+                <!--tag para que aparexca un mensaje de error si llega a ocurrir-->
+                    <div class="invalid-feedback">
+                        {%for error in form.biog.errors %}
+                        {{error}}
+                        {%endfor%}
+                    </div>
                 </div>
 
+
                 <div class="form-group">
-                    <label>Phone number</label>
+                    <label>Phone</label>
                     <input
-                        class="form-control"
+                        class="form-control {%if form.phone.errors %}is-invalid{%endif%}"
                         type="text"
                         name="phone"
                         placeholder="Phone number"
-                        value="{{ profile.phone }}"
+                        value="{%if form.errors %}{{form.phone.value}}{%else%}{{ profile.phone }}{%endif%}"
                     />
+                    <div class="invalid-feedback">
+                        {%for error in form.phone.errors %}
+                        {{error}}
+                        {%endfor%}
+                    </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-block mt-5">Update info</button>
@@ -66,5 +94,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}

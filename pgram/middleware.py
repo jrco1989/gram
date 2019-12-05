@@ -25,7 +25,7 @@ class ProfileCompletionMiddleware:
         if not request.user.is_anonymous and not request.user.is_staff:
             try:  
               profile = request.user.profile
-              if not profile.picture or not profile.biography:
+              if not profile.picture or not profile.biog:
                   if request.path not in [reverse('renueva'), reverse('bellachao')] and not request.path.startswith('/admin/'):
                       return redirect('renueva')
             except (ObjectDoesNotExist):
