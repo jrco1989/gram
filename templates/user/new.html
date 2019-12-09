@@ -7,7 +7,7 @@
 	{%if error%}
 	<p class="alert alert-danger">{{error}}</p>
 	{%endif%}-->
-	<form action="{%url 'new'%}" method="POST"><!--el action es la url, agregar siempre el csrf -->
+	<form action="{%url 'user:new'%}" method="POST"><!--el action es la url, agregar siempre el csrf -->
 		{% csrf_token %}
 	<!-- se cambia para mostrar el formulario según documentación 
 	<div class="form-group"><!-clase que le da estilo a esta división-->

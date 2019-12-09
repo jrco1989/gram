@@ -12,7 +12,7 @@
 	<p class="alert alert-danger">{{error }}</p><!--estilo pertenenciente a la clase alert -->
 <!-- -->
 	{%endif%}
-	<form method="POST" action="{% url 'ingreso' %}"> <!--#médodo para crear el formulario*/-->
+	<form method="POST" action="{% url 'user:ingreso' %}"> <!--#médodo para crear el formulario*/-->
 									 			  <!-- el tag {%url ...} perimte tomar un a URL y la convierte en una URL normal para no xtener que cambiarla de todos lados cuando cambie la URL en el archivo de URLS-->
 		{% csrf_token %}			<!--tag especia// método para protegernos de ataques "cross site" (evita que desde cualquier sitio puedan realziar submit al formulario) -->
 		<div class="form.group"><!-- clase que engloba a los fromularios-->
@@ -28,7 +28,7 @@
 		<!--<input type="password" placeholder="Password" name="password"/> antiguas forma d epresentar los inputs-->
 		<button class="btn btn-primary btn-block mt-5" type="submit">ingrese pécora</button>
 		<!--<button type="submit">ingrese pués pécora</button> antigua forma d eponer elbotón sin clase ni margen sin btn-block mt-5 que es para que ocupe todo el margen-->
-	<p class ="mt-4">Don't you have an account yet?<a href="{%url 'new' %}
+	<p class ="mt-4">Don't you have an account yet?<a href="{%url 'user:new' %}
 		">sign in now! wha't do you wait?</a></p>
 	</form>
 		        

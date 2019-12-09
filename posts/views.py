@@ -48,15 +48,15 @@ def create_post(request):
         form=PostForm(request.POST, request.FILE)
         if form.is_valid():
             form.save()
-            return redirect('feed')
-        else:
-            form = PostForm()
-        return render(
-            request=request,
-            templete_name='posts/create.html',
-            context={'form':form,
-            'user':request.user,
-            'profile':requst.user.profile})
+            return redirect('posts:feed')
+    else:
+        form = PostForm()
+    return render(
+        request=request,
+        template_name='posts/create.html',
+        context={'form':form,
+        'user':request.user,
+       'profile':request.user.profile})
 
 
 

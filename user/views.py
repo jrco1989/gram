@@ -15,7 +15,7 @@ def ingreso(request):
 		user=authenticate(request, username=username, password=password)
 		if user:
 			login(request, user)
-			return redirect('feed') #forma de redireccionar una página 
+			return redirect('posts:feed') #forma de redireccionar una página 
 		else:
 			return render(request, 'user/ingreso.html',{'error':'invalid username and password'})
 		#print (username, ': ',password )
@@ -25,7 +25,7 @@ def ingreso(request):
 @login_required
 def partida(request):
 	logout(request)
-	return redirect ('ingreso')
+	return redirect ('user:ingreso')
 def create(request):#la va´lidación debería crearse en itri archiv, no en la vista
 	#import pdb; pdb.set_trace() para ingresar en el "debouger" y realizar consultas a la bsae de datos
 	""" orimera form ade validar los campos de los usuarios
@@ -53,7 +53,7 @@ def create(request):#la va´lidación debería crearse en itri archiv, no en la 
 		form=CreateForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return redirect ('ingreso')
+			return redirect ('user:ingreso')
 	else:
 		form =CreateForm()
 	return render(
@@ -67,7 +67,7 @@ def actualizar(request):
 	if request.method == 'POST':
 		form =ProfileForm(request.POST, request.FILES) # se crea una instancia de profileform
 		if form.is_valid():#se realiza una validación 
-			print (form.cleaned_data)
+			#print (form.cleaned_data)
 			data=form.cleaned_data
 			profile.website=data['website']
 			profile.phone = data['phone']
@@ -75,7 +75,7 @@ def actualizar(request):
 			profile.picture = data['picture']
 			profile.save()
 
-			return redirect('renueva')
+			return redirect('user:renueva')
 
 	else:
 		form=ProfileForm()

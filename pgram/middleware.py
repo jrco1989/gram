@@ -17,7 +17,7 @@ from django.urls import reverse #para poder llamar a las  urls por el noombre y 
 """
 from django.shortcuts import redirect
 from django.urls import reverse
-
+#CON CAPTURA DE EXCEPCION 
 class ProfileCompletionMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
@@ -26,11 +26,11 @@ class ProfileCompletionMiddleware:
             try:  
               profile = request.user.profile
               if not profile.picture or not profile.biog:
-                  if request.path not in [reverse('renueva'), reverse('bellachao')] and not request.path.startswith('/admin/'):
-                      return redirect('renueva')
+                  if request.path not in [reverse('user:renueva'), reverse('user:bellachao')] and not request.path.startswith('/admin/'):
+                      return redirect('user:renueva')
             except (ObjectDoesNotExist):
-              if request.path not in [reverse('renueva'), reverse('bellachao'),reverse('feed')]:
-               return redirect ('feed')
+              if request.path not in [reverse('user:renueva'), reverse('user:bellachao'),reverse('feed')]:
+               return redirect ('posts:feed')
 
         response = self.get_response(request)
         return response
