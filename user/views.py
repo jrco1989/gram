@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from user.models import Profile
 from django.db.utils import IntegrityError #importando el error que salió en cmd para poder capturarlo
-from user.forms import ProfileForm
+from user.forms import ProfileForm, CreateForm
 
 def ingreso(request):
 	if request.method == 'POST':
@@ -28,6 +28,7 @@ def partida(request):
 	return redirect ('ingreso')
 def create(request):#la va´lidación debería crearse en itri archiv, no en la vista
 	#import pdb; pdb.set_trace() para ingresar en el "debouger" y realizar consultas a la bsae de datos
+	""" orimera form ade validar los campos de los usuarios
 	if request.method=='POST':
 		username=request.POST['username']
 		password=request.POST['pass']
@@ -38,7 +39,7 @@ def create(request):#la va´lidación debería crearse en itri archiv, no en la 
 		try:
 			user=User.objects.create_user(username=username, password=password)#para crear un usuario
 		except IntegrityError: #se debe ser específico cn oel error a fin de saber si falla por otra causa 
-			return render(request, 'user/new.html', {'error':'Usuario repetido'})#para evitar y mostra el error de la creaci´pon d eun usuario repetido
+			return render(request, 'user/new.html', {'error':'Usuario repetido'})#para evitar y mostra el error de la creación de un usuario repetido
 		user.first_name=request.POST['firstname']
 		user.last_name=request.POST['lastname']
 		user.email=request.POST['email']
@@ -47,7 +48,18 @@ def create(request):#la va´lidación debería crearse en itri archiv, no en la 
 		profile=Profile(user=user) #una de las maneras para crear un nuevo resitro en la bse de datos, es creando un ainstancia del modelo PRofile casociandola con el usuario 
 		profile.save()
 		return redirect('ingreso')
-	return render(request, 'user/new.html')
+	return render(request, 'user/new.html')"""
+	if request.method =='POST':
+		form=CreateForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect ('ingreso')
+	else:
+		form =CreateForm()
+	return render(
+		request=request, 
+		template_name='user/new.html',
+		context={'form':form})
 
 @login_required
 def actualizar(request):
