@@ -26,7 +26,7 @@ def ingreso(request):
 def partida(request):
 	logout(request)
 	return redirect ('ingreso')
-def create(request):
+def create(request):#la va´lidación debería crearse en itri archiv, no en la vista
 	#import pdb; pdb.set_trace() para ingresar en el "debouger" y realizar consultas a la bsae de datos
 	if request.method=='POST':
 		username=request.POST['username']

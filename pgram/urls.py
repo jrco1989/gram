@@ -10,7 +10,8 @@ from user import views as users_views
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
-    path('posts/', posts_views.list_posts, name='feed'),
+    path('', posts_views.list_posts, name='feed'),
+    path('post/new/',posts_views.create_post, name='poncha'),
     path('users/ingreso/', users_views.ingreso, name='ingreso'),
     path('users/partida/', users_views.partida, name='bellachao'),
     path('users/signup/', users_views.create, name='new'),

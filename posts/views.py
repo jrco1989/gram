@@ -1,9 +1,10 @@
 # Django
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 
 # Utilities
 from datetime import datetime
+from posts.forms import PostForm
 
 
 posts = [
@@ -40,5 +41,22 @@ posts = [
 def list_posts(request):
     """List existing posts."""
     return render(request, 'posts/feed.html', {'posts': posts})
+
+@login_required
+def create_post(request):
+    if request.method =='POST':
+        form=PostForm(request.POST, request.FILE)
+        if form.is_valid():
+            form.save()
+            return redirect('feed')
+        else:
+            form = PostForm()
+        return render(
+            request=request,
+            templete_name='posts/create.html',
+            context={'form':form,
+            'user':request.user,
+            'profile':requst.user.profile})
+
 
 
