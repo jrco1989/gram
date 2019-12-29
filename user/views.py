@@ -6,6 +6,29 @@ from django.contrib.auth.models import User
 from user.models import Profile
 from django.db.utils import IntegrityError #importando el error que salió en cmd para poder capturarlo
 from user.forms import ProfileForm, CreateForm
+from django.views.generic import DetailView
+from django.contrib.auth.models import User
+from django.urls import reverse #recuerde que reverse contruye una url
+from posts.models import Post
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+class  UserDetailView(LoginRequiredMixin, DetailView): #LoginRequiredMixin es un método para que sea requerido estar loqgueado en una vista 
+	#se debre decir cuál va a ser el query set
+	queryset=User.objects.all() # nos decie a partir d ecuál conjunto d edatos se van a traer los datos 
+	slug_field='username'#el slug es una forma d ellamar a un campo de texto único 
+	slug_url_kwarg='username'
+	template_name='user/detail.html'
+	context_object_name='user' #define el objeto que traigamos en el template 
+
+	#la siguiente funcion sobre escribe elget_data que nos trea datos del usuario 
+	def get_contex_data(self,**kwargs):
+		#para agregar los posts q u eson solo del usuario que consultasmos 
+		context=super().get_context_data(**kwargs)
+		user=self.get_objects()
+		context['posts']=Post.objects.filter(user=user).order_by('-created')
+		return context
+
 
 def ingreso(request):
 	if request.method == 'POST':
@@ -75,8 +98,9 @@ def actualizar(request):
 			profile.picture = data['picture']
 			profile.save()
 
-			return redirect('user:renueva')
-
+			
+			url= reverse('user:detail', kwargs={'username':request.user.username})#se usa en vez de redirect porque ella no se deja contruir recibiendo argumentos creo 
+			return redirect(url)#se modifica para cuando laurl recibe argumetnos 
 	else:
 		form=ProfileForm()
 

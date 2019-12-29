@@ -5,6 +5,9 @@ from django.contrib.auth.decorators import login_required
 # Utilities
 from datetime import datetime
 from posts.forms import PostForm
+from posts.models import Post
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView
 
 
 posts = [
@@ -37,15 +40,28 @@ posts = [
         'photo': 'https://picsum.photos/500/700/?image=1076',
     }
 ]
+
+"""antigua forma de llamasr los postos que igual toca reviar el por qué o estaba funcionado de manera correcta 
 @login_required #decorador de python que permite user la vista solo a usuarios autenticados 
 def list_posts(request):
-    """List existing posts."""
-    return render(request, 'posts/feed.html', {'posts': posts})
+    List existing posts."""
+    #return render(request, 'posts/feed.html', {'posts': posts}) sirve la lista d epost declarada
+    #posts=Post.objects.all().order_by('-created')
+    #return render(request, 'posts/feed.html', {'posts': posts})"""
+class PostsFeedView(LoginRequiredMixin, ListView):
+    """Return all published posts."""
+
+    template_name = 'posts/feed.html'
+    model = Post
+    ordering = ('-created',)
+    paginate_by = 2
+    context_object_name = 'posts'
+
 
 @login_required
 def create_post(request):
     if request.method =='POST':
-        form=PostForm(request.POST, request.FILE)
+        form=PostForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('posts:feed')
