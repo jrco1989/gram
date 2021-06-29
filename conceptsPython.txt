@@ -1,3 +1,0 @@
---Raise=<  is used to raise an exception.
-
--- x >>1   https://www.w3schools.com/python/python_operators.asp

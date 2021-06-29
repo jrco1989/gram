@@ -1,0 +1,6 @@
+text-based  => pure HTML and return  text plane. First way of the web pages.
+
+CGI => Common gateway interface. Through a request you can execute a script in server  
+
+PHP => is popularized by allowing to include the logic in HTML files.
+        It has the problem of repeating code

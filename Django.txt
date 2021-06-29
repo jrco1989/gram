@@ -1,0 +1,7 @@
+"***creation project ***"
+python3 -m venv .env
+
+ENTORNO/bin/activat  mac, linux 
+env.\Scripts\activate windows ?
+
+django-admin startproject name .
