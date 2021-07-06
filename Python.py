@@ -35,4 +35,7 @@ print(insert_var)
 insert_var = f"Hello {variable_1} and {variable_2} I'm Pytutorial I'm {age} years old"
 #print
 print(insert_var)
-
+#split
+insert_var.split('')
+number = '10,50,30,58'
+[int(i) for i in number.split(',') ]    

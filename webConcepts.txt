@@ -4,3 +4,7 @@ CGI => Common gateway interface. Through a request you can execute a script in s
 
 PHP => is popularized by allowing to include the logic in HTML files.
         It has the problem of repeating code
+
+CDN => (Content Delivery Network) son una red de entrega de contenidos compuesta de computadoras 
+        que contienen copias de datos colocados en varios puntos de una red con el 
+        fin de maximizar el ancho de banda que permita navegar más rápidamente al cliente final.
