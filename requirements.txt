@@ -1,0 +1,2 @@
+django -u 
+pillow 8.2.0

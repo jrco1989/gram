@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.urls import path, include
 #from posts import views as posts_views
-from django.conf.urls.static import static
+from django.conf.urls.static import static #handler of statics file, help us to open files 
 from django.conf import settings
 #from pgram import views
 #from user import views as users_views

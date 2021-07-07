@@ -11,7 +11,6 @@
 
     <div class="row justify-content-md-center">
         <div class="col-6 p-4" id="profile-box">
-
             <form action="{% url 'user:renueva' %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <!--muestra los errores que están ocurriendo 
@@ -26,7 +25,7 @@
                         <img src="{% static 'img/default-profile.png' %}" class="rounded-circle" height="50" />
                     {% endif %}
 
-                    <div class="media-body">
+                    <div class="media-body ">
                         <h5 class="ml-4">@{{ user.username }} | {{ user.get_full_name }}</h5>
                         <p class="ml-4"><input type="file" name="picture"></p>
                     </div>
@@ -51,18 +50,16 @@
                     <!--tag para que aparexca un mensaje de error si llega a ocurrir-->
                     <div class="invalid-feedback">
                         {%for error in form.website.errors %}
-                        {{error}}
+                          {{error}}
                         {%endfor%}
                     </div>
                         
                 </div>
-
                 <div class="form-group">
                     <label>Biography</label>
                     <textarea 
                         class="form-control {%if form.biog.errors %}is-invalid{%endif%}"
                         name="biog">{%if form.errors %}{{form.biog.value}}{%else%}{{ profile.biog }}{%endif%}
-                              
                     </textarea>
                 <!--tag para que aparexca un mensaje de error si llega a ocurrir-->
                     <div class="invalid-feedback">

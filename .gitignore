@@ -3,7 +3,6 @@
 __pycache__
 myvenv
 db.sqlite3
-/static
 /posts/migrations
 .DS_Store
 eng
@@ -11,4 +10,4 @@ Madonna.jpg
 Madonna-2.jpg
 Pubertad.jpg
 media
-static
+.env

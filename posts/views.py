@@ -41,7 +41,7 @@ posts = [
     }
 ]
 
-"""antigua forma de llamasr los postos que igual toca reviar el por qué o estaba funcionado de manera correcta 
+"""antigua forma de llamar los posts que igual toca reviar el por qué no estaba funcionado de manera correcta 
 @login_required #decorador de python que permite user la vista solo a usuarios autenticados 
 def list_posts(request):
     List existing posts."""

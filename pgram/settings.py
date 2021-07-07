@@ -18,27 +18,28 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.contenttypes',
+    'django.contrib.contenttypes',#takes care of the connection with the database 
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'posts',
     'user',
 ]
-#son una serie de hooks y apis que nos permiten modificar los objetos response y request antes de que lleguen a la vista y después de que salgan de la vista
-#son llamados nates y después de la petición 
+#son una serie de hooks y apis que nos permiten modificar el objeto request antes de que llegue a la vista 
+#  y response antes de que salga de la vista
+#son llamados antes y después de la petición 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',#este se encarga d ecomprobar todas las medidas de seguridad 
-    'django.contrib.sessions.middleware.SessionMiddleware',# es escargado de validar una seccíon 
+    'django.contrib.sessions.middleware.SessionMiddleware',# es escargado de validar una sesíon 
     'django.middleware.common.CommonMiddleware',#se encarga de ver lo del "deboger", cosas relacionadas del framework
     'django.middleware.csrf.CsrfViewMiddleware',#es el que nos permite llamar a nuestro token para validar formularios 
     'django.contrib.auth.middleware.AuthenticationMiddleware',#agrega cosas como request.user sin necesidad de llamar un template
-    'django.contrib.messages.middleware.MessageMiddleware',#relacionado al frameqock de mensajes de django 
+    'django.contrib.messages.middleware.MessageMiddleware',#relacionado al framework de mensajes de django 
     'django.middleware.clickjacking.XFrameOptionsMiddleware',#seguridad con frameoptions 
-    'pgram.middleware.ProfileCompletionMiddleware',#se pone laruta de la API para agregarla 
+    'pgram.middleware.ProfileCompletionMiddleware',#se pone la ruta de la API para agregarla 
 ]
 
-ROOT_URLCONF = 'pgram.urls'
+ROOT_URLCONF = 'pgram.urls' # main urls file
 
 TEMPLATES = [
     {
@@ -94,7 +95,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True
 
@@ -108,7 +109,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'# a partir de cual url se servirán los datos
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')#ruta absoluta de la ubicacion de los archivos estaáticos 
-STATICFILES_DIRS=[    #idendica cuales son los direcotios en donde están los archivos estáticos. 
+STATICFILES_DIRS=[    #idendica cuáles son los directorios donde están los archivos estáticos. 
     os.path.join(BASE_DIR, 'static'),
     ]
 STATICFILES_FINDER= [ #métodos para encontrar los archivos estáticos 
@@ -118,6 +119,7 @@ STATICFILES_FINDER= [ #métodos para encontrar los archivos estáticos
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 MEDIA_URL='/media/' #ubicacion del directorio de media
 LOGIN_URL='/users/ingreso' #ubicación de la vista para loguearnos
+
 """set
 #during
 #handling

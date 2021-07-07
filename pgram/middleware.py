@@ -1,7 +1,7 @@
-#middleware, django lo define como una serie de hooks y una api de bajo nivel para modificar los objetos response antes de salir y request antes de lleagar a la vista
+#middleware, django lo define como una serie de hooks y una api de bajo nivel para modificar los objetos response
 from django.shortcuts import redirect
 from django.core.exceptions import ObjectDoesNotExist
-from django.urls import reverse #para poder llamar a las  urls por el noombre y tener que escribir la ruta
+from django.urls import reverse #para poder llamar a las  urls por el nombre y tener que escribir la ruta
 
 """class ProfileCompletionMiddleware:  #pequeña aplicación para permitir navegar solo cuando el usuario haya ingresado su foto d eperfil y su biografia
    	def __init__(self, get_response):#procedimiento según documentación de Django.

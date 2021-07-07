@@ -11,6 +11,8 @@ from django.contrib.auth.models import User
 from django.urls import reverse #recuerde que reverse contruye una url
 from posts.models import Post
 from django.contrib.auth.mixins import LoginRequiredMixin
+import pdb; 
+
 
 
 class  UserDetailView(LoginRequiredMixin, DetailView): #LoginRequiredMixin es un método para que sea requerido estar loqgueado en una vista 
@@ -33,6 +35,9 @@ class  UserDetailView(LoginRequiredMixin, DetailView): #LoginRequiredMixin es un
 def ingreso(request):
 	if request.method == 'POST':
 		#print ('/*-'*24)
+		print ("entry to deebogguer ")
+		print (request.POST['username'])
+		#pdb.set_trace()
 		username= request.POST['username']
 		password= request.POST['password']
 		user=authenticate(request, username=username, password=password)
@@ -49,9 +54,9 @@ def ingreso(request):
 def partida(request):
 	logout(request)
 	return redirect ('user:ingreso')
-def create(request):#la va´lidación debería crearse en itri archiv, no en la vista
+def create(request):#la validación debería crearse en itri archiv, no en la vista
 	#import pdb; pdb.set_trace() para ingresar en el "debouger" y realizar consultas a la bsae de datos
-	""" orimera form ade validar los campos de los usuarios
+	""" primera forma de validar los campos de los usuarios
 	if request.method=='POST':
 		username=request.POST['username']
 		password=request.POST['pass']
@@ -86,21 +91,21 @@ def create(request):#la va´lidación debería crearse en itri archiv, no en la 
 
 @login_required
 def actualizar(request):
-	profile=request.user.profile #primera forma d etraer los datos 
+	profile=request.user.profile #primera forma de traer los datos 
 	if request.method == 'POST':
-		form =ProfileForm(request.POST, request.FILES) # se crea una instancia de profileform
+		form =ProfileForm(request.POST, request.FILES) #se crea una instancia de profileform
 		if form.is_valid():#se realiza una validación 
 			#print (form.cleaned_data)
 			data=form.cleaned_data
 			profile.website=data['website']
 			profile.phone = data['phone']
 			profile.biog = data['biog']
-			profile.picture = data['picture']
+			print(data)
+			#profile.picture = data['picture']
 			profile.save()
-
-			
-			url= reverse('user:detail', kwargs={'username':request.user.username})#se usa en vez de redirect porque ella no se deja contruir recibiendo argumentos creo 
-			return redirect(url)#se modifica para cuando laurl recibe argumetnos 
+			 
+			url= reverse('user:detail', kwargs={'username':request.user.username})#se usa en vez de redirect porque ella no se deja construir recibiendo argumentos creo 
+			return redirect(url)#se modifica para cuando la url recibe argumetnos 
 	else:
 		form=ProfileForm()
 
@@ -113,7 +118,8 @@ def actualizar(request):
             'user': request.user,
             'form': form
         })
-		#prestar atención al coxtexto "para no hacer todo el "path request punto profile.user", permite tamibien tener disponicle las variables declaradas
+		#prestar atención al coxtexto "para no hacer todo el "path request punto profile.user",
+		#permite tamibien tener disponicle las variables declaradas
 	#return render(request,'user/edit.html') , primera forma de realizarlo
 
 

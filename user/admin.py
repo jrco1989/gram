@@ -15,9 +15,24 @@ from user.models import Profile
 class ProfileAdmin(admin.ModelAdmin):
     """Profile admin."""
 
-    list_display = ('pk', 'user', 'phone', 'website', 'picture')
-    list_display_links = ('pk', 'user',)
-    list_editable = ('phone', 'website', 'picture')
+    list_display = (
+        'pk', 
+        'user', 
+        'phone', 
+        'website', 
+        'picture'
+        )
+
+    list_display_links = (
+        'pk', 
+        'user',
+        'phone'
+        )
+
+    list_editable = (
+        'website', 
+        'picture'
+        )
 
     search_fields = (
         'user__email',
@@ -33,7 +48,7 @@ class ProfileAdmin(admin.ModelAdmin):
         'created',
         'modified',
     )
-
+    # fieldsets changes the order of displaying or grouping things, is a tuple of tuples 
     fieldsets = (
         ('Profile', {
             'fields': (('user', 'picture'),),

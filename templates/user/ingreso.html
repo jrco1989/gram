@@ -2,7 +2,7 @@
 <!-- -->
 {%block head_content %}
 <title>
-	autenticación
+	Autenticación
 </title>
 {% endblock %}
 
@@ -10,7 +10,7 @@
 	{%if error%}
 	<!--<p style="color:red;"> {{error }}</p> estilo sencillo -->
 	<p class="alert alert-danger">{{error }}</p><!--estilo pertenenciente a la clase alert -->
-<!-- -->
+	<!-- -->
 	{%endif%}
 	<form method="POST" action="{% url 'user:ingreso' %}"> <!--#médodo para crear el formulario*/-->
 									 			  <!-- el tag {%url ...} perimte tomar un a URL y la convierte en una URL normal para no xtener que cambiarla de todos lados cuando cambie la URL en el archivo de URLS-->
@@ -26,8 +26,9 @@
 			<!-- cambiani los input de tyoi texto unicamente a partenecer a la clase de contrl de formularios -->
 		<!--<input type="text" placeholder="Username" name="username"/><!- placeholder es lo que se va a mostar y username es nombre del valor que se va a reicibir-->
 		<!--<input type="password" placeholder="Password" name="password"/> antiguas forma d epresentar los inputs-->
-		<button class="btn btn-primary btn-block mt-5" type="submit">ingrese pécora</button>
-		<!--<button type="submit">ingrese pués pécora</button> antigua forma d eponer elbotón sin clase ni margen sin btn-block mt-5 que es para que ocupe todo el margen-->
+		<button class="btn btn-primary btn-block mt-5" type="submit">ingrese</button>
+		<!--mt margen superior y block para que ocupe todo 
+			<button type="submit">login</button> antigua forma d eponer elbotón sin clase ni margen sin btn-block mt-5 que es para que ocupe todo el margen-->
 	<p class ="mt-4">Don't you have an account yet?<a href="{%url 'user:new' %}
 		">sign in now! wha't do you wait?</a></p>
 	</form>
