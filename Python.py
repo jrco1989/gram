@@ -39,3 +39,16 @@ print(insert_var)
 insert_var.split('')
 number = '10,50,30,58'
 [int(i) for i in number.split(',') ]    
+
+from math import isqrt, sqrt
+
+isqrt(10)
+sqrt(10)
+divmod(6,5)
+
+#lambda, the firts param is the parameters and the second param is the return
+lambda x:  2*x
+# is the same that
+def double (x):
+    return x*2
+

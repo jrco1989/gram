@@ -8,3 +8,7 @@ PHP => is popularized by allowing to include the logic in HTML files.
 CDN => (Content Delivery Network) son una red de entrega de contenidos compuesta de computadoras 
         que contienen copias de datos colocados en varios puntos de una red con el 
         fin de maximizar el ancho de banda que permita navegar más rápidamente al cliente final.
+
+MULTIPLATAFORMA => Disponible para varios sistemas operativos.
+
+GET => obtenemos un recurso del servidor

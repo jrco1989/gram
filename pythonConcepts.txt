@@ -1,3 +1,6 @@
 --Raise =>  is used to raise an exception.
 
 -- OPERATORS >>1   https://www.w3schools.com/python/python_operators.asp
+
+Requests and urllib3 are two libraries that python use to consume apis
+
