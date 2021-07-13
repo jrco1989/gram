@@ -52,3 +52,9 @@ lambda x:  2*x
 def double (x):
     return x*2
 
+#python es un lenguaje interpretado y cuando un intérprete de Python lee un archivo de Python,
+#primero establece algunas variables especiales. Luego ejecuta el código desde el archivo.
+#el variable __name__ se establecerá como __main__ si el módulo que se está ejecutando es el programa principal.
+#si el código está importando el módulo desde otro módulo, entonces el variable __name__ se establecerá en el nombre de ese módulo
+if __name__ = '__main__':
+    pass

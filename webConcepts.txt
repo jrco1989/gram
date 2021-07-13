@@ -12,3 +12,5 @@ CDN => (Content Delivery Network) son una red de entrega de contenidos compuesta
 MULTIPLATAFORMA => Disponible para varios sistemas operativos.
 
 GET => obtenemos un recurso del servidor
+
+headers => permiten tener una comunicaciòn correcta entre clienite y servidor
