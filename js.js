@@ -7,3 +7,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
   document.getElementById('CANTIDAD_DESAGREGACION_ITEM').type = 'number';
   document.getElementById('CANTIDAD_DESAGREGACION_ITEM').setAttribute('type','password')
   $('#password').attr('type', 'text');
+  
+  document.getElementById("img1").style.zIndex = "1"; 
