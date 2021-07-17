@@ -5,7 +5,7 @@ ORM => Object-relational mapping
         . Es el encargado de permitir el acceso y control de una base de datos relacional a través de
         una abstracción a clases y objetos.
 
-csrf_token => protege de ataques impidiendo que desde cualquer otro sitio puedan realizar un submin
+csrf_token => protege de ataques impidiendo que desde cualquer otro sitio puedan realizar un submit
               lo que hace es incluir un input con un token único por sesión, si se ha hecho un get previo se generará el token 
 
 // hay campos unicos según base de datos example UUID in postgres is correct in the others tables is a string
