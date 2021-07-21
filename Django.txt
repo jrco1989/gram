@@ -2,6 +2,7 @@
 python3 -m venv .env
 
 ENTORNO/bin/activat  mac, linux 
+source env/bin/activate 
 .env\Scripts\activate windows ?
 
 django-admin startproject name .

@@ -1,0 +1,4 @@
+-Terminar curso bàsico de django 
+-montar en heroku la pàgina de CAD 
+-retomar librerìa local  y empezar a implementar todo 
+-continuar con el otro curso de Django
