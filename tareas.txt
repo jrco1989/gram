@@ -1,4 +1,6 @@
 -Terminar curso bàsico de django 
+-ejercicos 1 h de signals y aggregates
 -montar en heroku la pàgina de CAD 
+-course of promise js |
 -retomar librerìa local  y empezar a implementar todo 
 -continuar con el otro curso de Django

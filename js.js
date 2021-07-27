@@ -1,4 +1,5 @@
 setTimeout(function(){ alert("Hello"); }, 3000);
+location.reload()
 
 document.addEventListener("DOMContentLoaded", function(event) { 
     //do work
@@ -9,3 +10,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
   $('#password').attr('type', 'text');
   
   document.getElementById("img1").style.zIndex = "1"; 
+
+
+  console.log(JSON.stringify({ x: 5, y: 6 })); //method converts a JavaScript object or value to a JSON string
