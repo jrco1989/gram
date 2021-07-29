@@ -13,3 +13,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
   console.log(JSON.stringify({ x: 5, y: 6 })); //method converts a JavaScript object or value to a JSON string
+
+  $('#relacionarItemsPresupuesto').on("hide.bs.modal", function () {
+
+  })
