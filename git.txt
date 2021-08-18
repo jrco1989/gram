@@ -1,0 +1,2 @@
+git config --global user.email "xx@xx.com" 
+git remote set-url origin git@github.com:jrco1989/notes.git

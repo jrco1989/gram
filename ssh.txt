@@ -1,0 +1,20 @@
+llaves pùblicas y llaves privadas, cifrado asimètrico de un solo camino 
+Lo que cifre con la llave pùblica solo lo descifra la llave privada
+
+ssh => Secure Shell es un protocolo de administración remota a travñes de 
+        un mecanismo de autenticación 
+
+-t especifica el algoritmo que vamos a usar 
+rsa es un algoritmo popular 
+-b para especificar que tan compleja es la llave 
+-C correo electrónico al cual estará conectada la llave 
+ssh-keygen -t rsa -b 4096 -C "jrco1989@hotmail.com"
+
+ahora se verifica que el servidor de llaves ssh esté encendido 
+eval $(ssh-agent -s)
+
+Agregar la llave al sistema 
+ssh-add ~/.ssh/id_rsa
+
+se evalua que esté corriendo 
+eval "$(ssh-agent -s)"
