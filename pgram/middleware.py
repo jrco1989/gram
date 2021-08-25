@@ -22,15 +22,7 @@ class ProfileCompletionMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
     def __call__(self, request):
-        if not request.user.is_anonymous and not request.user.is_staff:
-            try:  
-              profile = request.user.profile
-              if not profile.picture or not profile.biog:
-                  if request.path not in [reverse('user:renueva'), reverse('user:bellachao')] and not request.path.startswith('/admin/'):
-                      return redirect('user:renueva')
-            except (ObjectDoesNotExist):
-              if request.path not in [reverse('user:renueva'), reverse('user:bellachao'),reverse('feed')]:
-               return redirect ('posts:feed')
-
         response = self.get_response(request)
         return response
+
+        
