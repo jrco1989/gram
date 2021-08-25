@@ -17,3 +17,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
   $('#relacionarItemsPresupuesto').on("hide.bs.modal", function () {
 
   })
+
+let myString = parseFloat("384.75a") ;
+console.log(myString);
+
+$("#COD_CAPITULO_APU_ITEM").removeAttr("value");
+$("#COD_CAPITULO_APU_ITEM").removeAttr("style");
+$("#COD_CAPITULO_APU_ITEM").removeAttr("disabled");
