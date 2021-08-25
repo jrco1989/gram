@@ -1,0 +1,7 @@
+"reinventando la gestión de datos"
+bases de datos No sql, usa un modelo orientado a documentos basados en Json aunque se 
+almacena en Bson (representación binaria del Json). Usa colecciones de los datos(clave-valor)
+ventajas: -Agiliza la escalibidad de las aplicaciones
+          -Modelo de datos intuitivo
+          -Mejora la experiencia de desarrollo 
+          -Acelera tiempo de comercialización y reducción de costos 

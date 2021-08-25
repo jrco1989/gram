@@ -1,0 +1,8 @@
+-- Raise =>  is used to raise an exception.
+
+-- OPERATORS >>   https://www.w3schools.com/python/python_operators.asp
+
+-- Requests and urllib3 are two libraries that python use to consume apis
+
+-- pipeines => a sequence of converters from one file to another
+

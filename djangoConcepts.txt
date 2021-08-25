@@ -1,0 +1,28 @@
+Django  => was born in 2003 by the need of two developers to publish several sites quickly 
+
+ORM => Object-relational mapping 
+    CONJUNTO DE CLASES que nos permite interactuar cobn las bases de datos sql y definir structure of our table 
+        . Es el encargado de permitir el acceso y control de una base de datos relacional a través de
+        una abstracción a clases y objetos.
+
+csrf_token => protege de ataques impidiendo que desde cualquer otro sitio puedan realizar un submit
+              lo que hace es incluir un input con un token único por sesión, si se ha hecho un get previo se generará el token 
+
+// hay campos unicos según base de datos example UUID in postgres is correct in the others tables is a string
+// hay varias maneras de crear regiatros, instanciando la clase o usando 'create'
+// Él no guarda los archivos estáticos en la base de datos, guarda la referencia al archivo
+// Pilow es la librería que nos ayuda con el manejo de imágenes 
+// search_fields = (user__email') al ser user una relación se usa el doble _ _ para acceder a los campos de ese modelo
+// el tag URL que se usa en los templates, nos permite armar una url al partir del nombre definido 
+    en urls.py para abrir algún template
+
+// 
+
+
+***DOCUMENTATION ******
+  *https://docs.djangoproject.com/en/3.2/ref/request-response/
+  *https://docs.djangoproject.com/en/3.2/ref/templates/
+  *https://docs.djangoproject.com/en/3.2/ref/models/fields/
+  *https://docs.djangoproject.com/en/3.2/topics/db/queries/
+  *https://docs.djangoproject.com/en/3.2/topics/auth/default/#authentication-in-web-requests
+  *https://docs.djangoproject.com/en/3.2/topics/http/middleware/

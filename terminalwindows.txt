@@ -1,0 +1,19 @@
+file.txt    open file 
+
+
+
+
+
+
+
+
+
+xdg-open  name.txt
+touch test.txt   //create file
+head, cat, less, more, nl, // open 
+vim  or nano (:cq, :exit to exit from vim)  //edit
+rm     //delete files and directories
+
+
+
+

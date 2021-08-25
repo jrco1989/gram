@@ -1,0 +1,34 @@
+https://www.linkedin.com/in/javier-ricarco-castillo-ochoa/
+https://github.com/jrco1989
+
+que se adapta al cambio, 
+de gustos diversos, 
+soy un apersona en constante construcción, me siento curioso, gusta estar explorando, me gusta escuchar,
+siento que soy alguien en quien se puede confiar, siento que 
+me ha costado ser constante y tal vez e
+
+a veces me tomo un tiempo para expresar las ideas, no soy muy fliudo al hablar cuando me siento nervioso
+
+
+Atentamente:
+Javier Ricardo Castillo Ochoa
+cc 1014203398
+cel 3219045657
+
+Cuento con 11 meses de experiencia desarrollando una aplicación web que permite llevar un control presupestal y de contratación de obras, a una empresa constructora. 
+En mi proceso de formación he aprendido a manejar un repositorio remoto para el control de versiones (github) y conceptos básicos, además de Djano y Python, en JS, C#, HTML , CSS y SQL
+
+Soy profesional en ingeniería mecánica, realicé mi pregrado en la universidad central finalizándolo en el año 2017. 
+En ese proceso conocí los primeros conceptos de programación, posterior a mi graduación decidí profundizar en esta área y lo he realizado por mi propia cuenta apoyándome en blogs y videos. 
+
+Para mi sería todo un honor ser parte de una empresa de tecnología que está a la vanguardia en el sector. 
+Quiero ser parte de este equipo de trabajo porque me interesa aprender de los mejores y aportar todos mis conocimientos 
+
+He utilizado sus módulos de autenticación, sé manipular datos a través del ORM de Django, he usado lal librería de Graphene-Django y DRF para crear apis. 
+
+experiencia 
+Payc 
+desarrollador web
+realizar implementaciones nuevas en una apllicación de control presupuestal y contractual según las necesidades del cliente.
+
+Ingeniero mecánico

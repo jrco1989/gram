@@ -1,0 +1,13 @@
+"***creation project ***"
+python3 -m venv .env
+
+ENTORNO/bin/activat  mac, linux 
+source env/bin/activate 
+.env\Scripts\activate windows ?
+
+django-admin startproject name .
+python3 manage.py startapp name 
+
+python3 manage.py shell
+
+python3 manage.py createsuperuser 
