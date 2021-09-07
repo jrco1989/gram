@@ -1,11 +1,13 @@
 # Django
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
 
 # Utilities
 from datetime import datetime
 
 from django.views.generic.detail import DetailView
+from django.views.generic import CreateView
 from posts.forms import PostForm
 from posts.models import Post
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -61,7 +63,7 @@ class PostsFeedView(LoginRequiredMixin, ListView):
     #   import pdb; pdb.set_trace()
 
 
-@login_required
+'''@login_required
 def create_post(request):
     if request.method =='POST':
         form=PostForm(request.POST, request.FILES)
@@ -75,7 +77,7 @@ def create_post(request):
         template_name='posts/create.html',
         context={'form':form,
         'user':request.user,
-        'profile':request.user.profile})
+        'profile':request.user.profile})'''
 
 class PostDetailView(LoginRequiredMixin, DetailView):
     #si nio le enviamos template_name el lo buscarà en un lugar predeterminad 
@@ -85,3 +87,16 @@ class PostDetailView(LoginRequiredMixin, DetailView):
     context_object_name = 'post'
 
 
+class CreatePostView(LoginRequiredMixin, CreateView):
+    """Create a new post."""
+
+    template_name = 'posts/create.html'
+    form_class = PostForm
+    success_url = reverse_lazy('posts:feed')
+
+    def get_context_data(self, **kwargs):
+        """Add user and profile to context."""
+        context = super().get_context_data(**kwargs)
+        context['user'] = self.request.user
+        context['profile'] = self.request.user.profile
+        return context

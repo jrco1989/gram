@@ -3,10 +3,12 @@ from django.shortcuts import render, redirect  #nos permite usar un método para
 from django.contrib.auth import authenticate, login, logout #importando las funciones de autenticadcion, logout de login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.urls.base import reverse_lazy
+from django.views.generic.edit import FormView
 from user.models import Profile
 from django.db.utils import IntegrityError #importando el error que salió en cmd para poder capturarlo
 from user.forms import ProfileForm, CreateForm
-from django.views.generic import DetailView
+from django.views.generic import DetailView, FormView, UpdateView
 from django.contrib.auth.models import User
 from django.urls import reverse #recuerde que reverse contruye una url
 from posts.models import Post
@@ -38,10 +40,6 @@ class  UserDetailView(LoginRequiredMixin, DetailView):
 
 def ingreso(request):
 	if request.method == 'POST':
-		#print ('/*-'*24)
-		print ("entry to deebogguer ")
-		print (request.POST['username'])
-		#pdb.set_trace()
 		username= request.POST['username']
 		password= request.POST['password']
 		user=authenticate(request, username=username, password=password)
@@ -54,14 +52,10 @@ def ingreso(request):
 		#print ('/*-'*24)
 	return render (request, 'user/ingreso.html')
 
-@login_required
-def partida(request):
-	logout(request)
-	return redirect ('user:ingreso')
-
+"""
 def create(request):#la validación debería crearse en itri archiv, no en la vista
 	#import pdb; pdb.set_trace() para ingresar en el "debouger" y realizar consultas a la bsae de datos
-	""" primera forma de validar los campos de los usuarios
+	primera forma de validar los campos de los usuarios
 	if request.method=='POST':
 		username=request.POST['username']
 		password=request.POST['pass']
@@ -81,7 +75,7 @@ def create(request):#la validación debería crearse en itri archiv, no en la vi
 		profile=Profile(user=user) #una de las maneras para crear un nuevo resitro en la bse de datos, es creando un ainstancia del modelo PRofile casociandola con el usuario 
 		profile.save()
 		return redirect('ingreso')
-	return render(request, 'user/new.html')"""
+	return render(request, 'user/new.html')
 	if request.method =='POST':
 		form=CreateForm(request.POST)
 		if form.is_valid():
@@ -94,6 +88,24 @@ def create(request):#la validación debería crearse en itri archiv, no en la vi
 		template_name='user/new.html',
 		context={'form':form})
 
+"""
+#cada que se usa un FormVIEW hay q uesobreescribir el form_valid
+#porque por defoult el solo redirecciona a la URL indicada
+class SignupView(FormView):
+	template_name = 'user/new.html'
+	form_class = CreateForm
+	success_url = reverse_lazy('user:ingreso')
+
+	def form_valid(self, form):
+		form.save()
+		return super().form_valid(form)
+
+@login_required
+def partida(request):
+	logout(request)
+	return redirect ('user:ingreso')
+
+"""
 @login_required
 def actualizar(request):
 	profile=request.user.profile #primera forma de traer los datos 
@@ -126,6 +138,21 @@ def actualizar(request):
 		#prestar atención al coxtexto "para no hacer todo el "path request punto profile.user",
 		#permite tamibien tener disponicle las variables declaradas
 	#return render(request,'user/edit.html') , primera forma de realizarlo
+"""
 
 
+class UpdateProfileView(LoginRequiredMixin, UpdateView):
+    """Update profile view."""
 
+    template_name = 'user/edit.html'
+    model = Profile
+    fields = ['website', 'biog', 'phone', 'picture']
+
+    def get_object(self):
+        """Return user's profile."""
+        return self.request.user.profile
+
+    def get_success_url(self):
+        """Return to user's profile."""
+        username = self.object.user.username
+        return reverse('user:detail', kwargs={'username': username})

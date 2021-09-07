@@ -5,7 +5,7 @@ from user.models import Profile
 
 class CreateForm (forms.Form):
 	username= forms.CharField(min_length=4, max_length=50)
-	password=forms.CharField(max_length=50, widget=forms.PasswordInput())
+	password=forms.CharField(min_length=4, max_length=50, widget=forms.PasswordInput())
 	password_confirmation=forms.CharField(max_length=69, widget=forms.PasswordInput())
 	first_name=forms.CharField(min_length=3, max_length=90 )
 	last_name=forms.CharField(min_length=3, max_length=90 )

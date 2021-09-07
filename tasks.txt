@@ -1,0 +1,4 @@
+-   task system 
+-   follow system 
+-   show user detail with the previous tasks and the list posts own
+-   post detail
