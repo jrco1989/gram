@@ -15,17 +15,18 @@ from django.urls import reverse #para poder llamar a las  urls por el nombre y t
 			response = self.get_response(request) #en caso de que no sea  ninguno de los ifs anteriores
 	   		return response
 """
-from django.shortcuts import redirect
-from django.urls import reverse
+
 #CON CAPTURA DE EXCEPCION 
 class ProfileCompletionMiddleware:
+    #import pdb; pdb.set_trace()-
     def __init__(self, get_response):
         self.get_response = get_response
     def __call__(self, request):
         if not request.user.is_anonymous and not request.user.is_staff:
             try:  
               profile = request.user.profile
-              if not profile.picture or not profile.biog:
+              #if not profile.picture or not profile.biog:
+              if not profile.picture:
                   if request.path not in [reverse('user:renueva'), reverse('user:bellachao')] and not request.path.startswith('/admin/'):
                       return redirect('user:renueva')
             except (ObjectDoesNotExist):

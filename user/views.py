@@ -13,12 +13,11 @@ from posts.models import Post
 from django.contrib.auth.mixins import LoginRequiredMixin
 import pdb; 
 
-
-
-class  UserDetailView(LoginRequiredMixin, DetailView): #LoginRequiredMixin es un método para que sea requerido estar loqgueado en una vista 
+#LoginRequiredMixin es un método para que sea requerido estar loqgueado en una vista 
+class  UserDetailView(LoginRequiredMixin, DetailView): 
 	#se debre decir cuál va a ser el query set
-	queryset=User.objects.all() # nos decie a partir d ecuál conjunto d edatos se van a traer los datos 
-	slug_field='username'#el slug es una forma d ellamar a un campo de texto único 
+	queryset=User.objects.all() # nos decie a partir de cuál conjunto de datos se van a traer los datos 
+	slug_field='username'#el slug es una forma de llamar a un campo de texto único 
 	slug_url_kwarg='username'
 	template_name='user/detail.html'
 	context_object_name='user' #define el objeto que traigamos en el template 
@@ -54,6 +53,7 @@ def ingreso(request):
 def partida(request):
 	logout(request)
 	return redirect ('user:ingreso')
+
 def create(request):#la validación debería crearse en itri archiv, no en la vista
 	#import pdb; pdb.set_trace() para ingresar en el "debouger" y realizar consultas a la bsae de datos
 	""" primera forma de validar los campos de los usuarios
@@ -101,10 +101,10 @@ def actualizar(request):
 			profile.phone = data['phone']
 			profile.biog = data['biog']
 			print(data)
-			#profile.picture = data['picture']
+			profile.picture = data['picture']
 			profile.save()
-			 
-			url= reverse('user:detail', kwargs={'username':request.user.username})#se usa en vez de redirect porque ella no se deja construir recibiendo argumentos creo 
+			#se usa en vez de redirect porque ella no se deja construir recibiendo argumentos creo 
+			url= reverse('user:detail', kwargs={'username':request.user.username})
 			return redirect(url)#se modifica para cuando la url recibe argumetnos 
 	else:
 		form=ProfileForm()

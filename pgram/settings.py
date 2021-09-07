@@ -109,7 +109,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'# a partir de cual url se servirán los datos
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')#ruta absoluta de la ubicacion de los archivos estaáticos 
-STATICFILES_DIRS=[    #idendica cuáles son los directorios donde están los archivos estáticos. 
+#idendica cuáles son los directorios donde están los archivos estáticos. 
+STATICFILES_DIRS=[    
     os.path.join(BASE_DIR, 'static'),
     ]
 STATICFILES_FINDER= [ #métodos para encontrar los archivos estáticos 

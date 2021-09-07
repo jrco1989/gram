@@ -16,8 +16,10 @@ class CreateForm (forms.Form):
 	#se debe crear la funcion de validación para validar los campos del formulario
 	def clean_username(self):
 		#Username most be unique
-		username=self.cleaned_data['username']#debemos traer el valor con eeste atributo	que se trea d eun diccionario
-		username_taken=User.objects.filter(username=username).exists()#usamos filter en vez de get para evitar que no straiga un aexcepción, el exit se usa para evitar hacer un query de todo el usuario   nos retorna un booleano 
+		username=self.cleaned_data['username']#debemos traer el valor con este atributo	que se trea de un diccionario
+		#usamos filter en vez de get para evitar que no straiga un aexcepción, 
+		#el exist se usa para evitar hacer un query de todo el usuario, nos retorna un booleano 
+		username_taken=User.objects.filter(username=username).exists()
 		if username_taken:
 			raise forms.ValidationError ('Username is already in use') #para lanzar una excepción 
 		return username #es necesario retornar el dato para evitar que cuando se llame el metodo clean no suceda error por estar vacío
@@ -44,4 +46,4 @@ class ProfileForm(forms.Form):
 	website=forms.URLField(max_length=200, required=True)
 	biog=forms.CharField(max_length=500, required=False)
 	phone=forms.CharField(max_length=20, required=False)
-	#picture=forms.ImageField()
+	picture=forms.ImageField()

@@ -1,2 +1,2 @@
-django -u 
-pillow 8.2.0
+django 
+pillow ==8.2.0

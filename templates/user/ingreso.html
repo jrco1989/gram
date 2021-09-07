@@ -7,30 +7,37 @@
 {% endblock %}
 
 {% block container %}
-	{%if error%}
-	<!--<p style="color:red;"> {{error }}</p> estilo sencillo -->
-	<p class="alert alert-danger">{{error }}</p><!--estilo pertenenciente a la clase alert -->
-	<!-- -->
-	{%endif%}
-	<form method="POST" action="{% url 'user:ingreso' %}"> <!--#médodo para crear el formulario*/-->
-									 			  <!-- el tag {%url ...} perimte tomar un a URL y la convierte en una URL normal para no xtener que cambiarla de todos lados cuando cambie la URL en el archivo de URLS-->
-		{% csrf_token %}			<!--tag especia// método para protegernos de ataques "cross site" (evita que desde cualquier sitio puedan realziar submit al formulario) -->
-		<div class="form.group"><!-- clase que engloba a los fromularios-->
-			<!--<input type="text" class="form-control">-->
-			<input class="from-control btn-block mt-2" type="text" placeholder="Username" name ="username" />
-		</div>
-		<div class="form.group"><!-- clase que engloba a los fromularios-->
-			<!--<input type="text" class="form-control">-->
-			<input class="from-control btn-block mt-1" type="password" placeholder="Password" name ="password" /> 
-		</div>
-			<!-- cambiani los input de tyoi texto unicamente a partenecer a la clase de contrl de formularios -->
-		<!--<input type="text" placeholder="Username" name="username"/><!- placeholder es lo que se va a mostar y username es nombre del valor que se va a reicibir-->
-		<!--<input type="password" placeholder="Password" name="password"/> antiguas forma d epresentar los inputs-->
-		<button class="btn btn-primary btn-block mt-5" type="submit">ingrese</button>
-		<!--mt margen superior y block para que ocupe todo 
+{%if error%}
+<!--<p style="color:red;"> {{error }}</p> estilo sencillo -->
+<p class="alert alert-danger">{{error }}</p>
+<!--estilo pertenenciente a la clase alert -->
+<!-- -->
+{%endif%}
+<form method="POST" action="{% url 'user:ingreso' %}">
+	<!--#médodo para crear el formulario*/-->
+	<!-- el tag {%url ...} perimte tomar una URL y la convierte en una URL normal para no tener que 
+			cambiarla de todos lados cuando cambie la URL en el archivo de URLS-->
+	{% csrf_token %}
+	<!--tag especia// método para protegernos de ataques "cross site" 
+										(evita que desde cualquier sitio puedan realziar submit al formulario) -->
+	<div class="form.group">
+		<!-- clase que engloba a los fromularios-->
+		<!--<input type="text" class="form-control">-->
+		<input class="from-control btn-block mt-2" type="text" placeholder="Username" name="username" />
+	</div>
+	<div class="form.group">
+		<!-- clase que engloba a los fromularios-->
+		<!--<input type="text" class="form-control">-->
+		<input class="from-control btn-block mt-1" type="password" placeholder="Password" name="password" />
+	</div>
+	<!-- cambiani los input de tyoi texto unicamente a partenecer a la clase de contrl de formularios -->
+	<!--<input type="text" placeholder="Username" name="username"/><!- placeholder es lo que se va a mostar y username es nombre del valor que se va a reicibir-->
+	<!--<input type="password" placeholder="Password" name="password"/> antiguas forma d epresentar los inputs-->
+	<button class="btn btn-primary btn-block mt-5" type="submit">ingrese</button>
+	<!--mt margen superior y block para que ocupe todo 
 			<button type="submit">login</button> antigua forma d eponer elbotón sin clase ni margen sin btn-block mt-5 que es para que ocupe todo el margen-->
-	<p class ="mt-4">Don't you have an account yet?<a href="{%url 'user:new' %}
+	<p class="mt-4">Don't you have an account yet?<a href="{%url 'user:new' %}
 		">sign in now! wha't do you wait?</a></p>
-	</form>
-		        
+</form>
+
 {% endblock%}

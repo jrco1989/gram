@@ -1,6 +1,0 @@
-databound Se produce cuando una fila de datos se enlaza a los datos de un control GridView.
-          permite modificar los datos antes de mostrarlos. 
-
-.collapseAll();
-
-{ field: "OrderDate", format: "{0:MM/dd/yyyy}", enableGroupByFormat: true },
