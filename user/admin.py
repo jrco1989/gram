@@ -26,12 +26,14 @@ class ProfileAdmin(admin.ModelAdmin):
     list_display_links = (
         'pk', 
         'user',
-        'phone'
+#        'phone'
         )
 
     list_editable = (
         'website', 
-        'picture'
+        'picture',
+        'phone'
+
         )
 
     search_fields = (

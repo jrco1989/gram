@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 
 # Utilities
 from datetime import datetime
+
+from django.views.generic.detail import DetailView
 from posts.forms import PostForm
 from posts.models import Post
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -56,6 +58,7 @@ class PostsFeedView(LoginRequiredMixin, ListView):
     ordering = ('-created',)
     paginate_by = 2
     context_object_name = 'posts'
+    #   import pdb; pdb.set_trace()
 
 
 @login_required
@@ -72,7 +75,13 @@ def create_post(request):
         template_name='posts/create.html',
         context={'form':form,
         'user':request.user,
-       'profile':request.user.profile})
+        'profile':request.user.profile})
 
+class PostDetailView(LoginRequiredMixin, DetailView):
+    #si nio le enviamos template_name el lo buscarà en un lugar predeterminad 
+    #por el nombre de details
+    template_name = 'posts/detail.html'
+    queryset = Post.objects.all()
+    context_object_name = 'post'
 
 

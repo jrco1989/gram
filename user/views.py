@@ -16,16 +16,21 @@ import pdb;
 #LoginRequiredMixin es un método para que sea requerido estar loqgueado en una vista 
 class  UserDetailView(LoginRequiredMixin, DetailView): 
 	#se debre decir cuál va a ser el query set
-	queryset=User.objects.all() # nos decie a partir de cuál conjunto de datos se van a traer los datos 
-	slug_field='username'#el slug es una forma de llamar a un campo de texto único 
+	#nos decie a partir de cuál CONJUNTNO de datos se van a traer los datos 
+	#all() NO ESATÀ tRAYENDO todos los datos, referencia al conjuento del cual se extraen
+	queryset=User.objects.all()
+	#el slug es una forma de llamar a un campo de texto único 
+	slug_field='username'
+	#nombre de los parámetros segùn la construcción la url
 	slug_url_kwarg='username'
 	template_name='user/detail.html'
-	context_object_name='user' #define el objeto que traigamos en el template 
+	context_object_name='user' #define el objeto que treamos en el template 
 
-	#la siguiente funcion sobre escribe elget_data que nos trea datos del usuario 
+	#la siguiente funcion sobre escribe el get_contex_data que nos trea datos del usuario 
+	# para agregar nuevos datos al contexto, en este caso, los posts del uruario
 	def get_contex_data(self,**kwargs):
-		#para agregar los posts q u eson solo del usuario que consultasmos 
-		context=super().get_context_data(**kwargs)
+		#para agregar los posts que son solo del usuario que consultasmos 
+		context=super().get_context_data(**kwargs)#trae el contexto oqoue ooooooubiera traído si no se huviese sobreescrito
 		user=self.get_objects()
 		context['posts']=Post.objects.filter(user=user).order_by('-created')
 		return context
